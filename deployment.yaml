@@ -1,0 +1,33 @@
+apiVersion: apps/v1beta1 # apps/v1beta2를 사용하는 1.9.0보다 더 이전의 버전용
+kind: Deployment # Deployment
+metadata:
+  name: boiler-api # 배포하는 항목의 이름
+spec:
+  replicas: 2 # 템플릿에 매칭되는 파드 2개를 구동하는 디플로이먼트임
+  selector:
+    matchLabels:
+      app: boiler-api # 앱이름
+  template:
+    metadata:
+      labels:
+        app: boiler-api # 앱 이름
+    spec:
+      containers:
+        - name: boiler-api # 컨테이너 이름
+          image: <image 주소>/boiler-api:latest # ecr에 올라간 이미지. 이거 잘못적으면 못 읽음
+          ports:
+            - containerPort: 3000 # 사용할 포트
+---
+apiVersion: v1
+kind: Service # 서비스
+metadata:
+  name: boiler-api # 서비스의 이름
+spec:
+  ports:
+    - protocol: TCP
+      port: 80 # 사용할 포트
+      targetPort: 3000
+  selector:
+    app: boiler-api # 위에 deployment 의 selector/matchLabels/app 에 적힌 이름
+---
+

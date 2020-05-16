@@ -1,0 +1,62 @@
+openapi: 3.0.1
+
+info:
+  title: boiler api
+  description: boiler api
+  version: 1.0.0
+servers:
+  - url: /api/v1
+tags:
+  - name: User
+    description: 유저
+paths:
+  /user:
+    security:
+      - BearerAuth: [admin]
+    post:
+      tags:
+        - User
+      description: 유저 생성.
+      responses:
+        201:
+          description: 생성
+          content: {}
+    get:
+      tags:
+        - User
+      description: 유저 가져오기. 아무 body 없이, Bearer Token만 있으면 됩니다.
+      responses:
+        200:
+          description: 유저
+          content: {}
+components:
+  schemas:
+    CreateUserPayload:
+      title: user
+      required:
+        - name
+        - email
+      type: object
+      properties:
+        name:
+          type: string
+          example: 1
+          description: name
+        email:
+          type: string
+          example: 1
+          description: email
+  Error:
+    NotFoundError:
+      description: 조회하려는 항목을 못 찾았을때
+    ServerError:
+      description: internal server error
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - ApiKeyAuth: []
+  - BearerAuth:
+      - read
+      - write

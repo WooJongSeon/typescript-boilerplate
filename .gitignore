@@ -1,0 +1,8 @@
+node_modules
+dist
+coverage
+npm-debug.log
+.env
+.DS_Store
+mongo_data
+*.log
