@@ -15,7 +15,7 @@ const dbConfig: any = {
 };
 
 const winiston = {
-  logpath: 'partner/logs/',
+  logpath: 'user/logs/',
 };
 export {
   app, dbConfig, winiston
