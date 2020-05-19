@@ -12,6 +12,12 @@ const dbConfig: any = {
   username: process.env.DB_USER || 'root',
   host: process.env.DB_HOST || 'localhost',
   dialect: 'mysql',
+  define: {
+    charset: 'utf8',
+    dialectOptions: {
+      collate: 'utf8_general_ci',
+    },
+  },
 };
 
 const winiston = {
