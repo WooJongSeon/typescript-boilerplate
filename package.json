@@ -12,9 +12,8 @@
     "dev:start": "npx npm-run-all build start",
     "dev": "npx nodemon",
     "watch": "npm run dev",
-    "test": "npx jest",
-    "test:watch": "npx jest --watch",
-    "test:watch-specific": "npx jest test/integration/quotation/list.spec.ts --watch",
+    "test:unit": "npm run build && npx jest --clearCache && NODE_ENV=test npx jest --detectOpenHandles --verbose --runInBand --forceExit",
+    "test:watch-specific": "npx jest test/integration/payment/partnerPayment/list.spec.ts --watch",
     "coverage": "npx jest --coverage"
   },
   "devDependencies": {

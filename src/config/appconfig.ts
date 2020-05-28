@@ -20,9 +20,23 @@ const dbConfig: any = {
   },
 };
 
+const testDBConfig: any = {
+  port: 3306,
+  database: 'test',
+  password: '1111',
+  username: 'root',
+  host: '127.0.0.1',
+  dialect: 'mysql',
+  define: {
+    charset: 'utf8',
+    dialectOptions: {
+      collate: 'utf8_general_ci',
+    },
+  },
+}
 const winiston = {
   logpath: 'user/logs/',
 };
 export {
-  app, dbConfig, winiston
+  app, dbConfig, winiston, testDBConfig
 };

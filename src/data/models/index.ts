@@ -1,7 +1,11 @@
 import { Sequelize } from 'sequelize';
-import { dbConfig as config } from '../../config/appconfig';
+import { dbConfig as config, testDBConfig as test } from '../../config/appconfig';
 import User from './user';
-export const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+
+export const sequelize = process.env.NODE_ENV === 'test' ?
+  new Sequelize(test.database, test.username, test.password, test)
+  : new Sequelize(config.database, config.username, config.password, config);
 
 export const db = {
   sequelize,
