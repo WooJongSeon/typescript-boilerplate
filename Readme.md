@@ -18,6 +18,9 @@ validater 는 express-validator를 사용합니다.
 
 로그는 log 폴더에 지속적으로 기록됩니다.
 
+TODO: sinon 모듈 써서 유닛 테스트 작성하기
+ - sequelize 모듈 - DAL 부분을 함수를 모킹하고 서비스 단위로 테스트 하기
+
 ## 프로젝트 세팅
 
 1. npm install
@@ -30,3 +33,4 @@ validater 는 express-validator를 사용합니다.
 
 (mysql table은 없으면 자동으로 생성됩니다.)
 
+5. 테스트 코드를 실행하려면 appconfig.ts를 보고 테스트용 스키마를 만들어야 합니다.
