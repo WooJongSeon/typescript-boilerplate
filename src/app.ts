@@ -3,7 +3,6 @@ import express from 'express';
 import logger from 'morgan';
 
 import indexRouter from './routes/index';
-import { sequelize } from './data/models/index';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
@@ -14,16 +13,12 @@ const app = express();
 
 dotenv.config();
 
-// const execSync = require('child_process').execSync;
-// const output = execSync('npx sequelize-cli db:migrate', { encoding: 'utf-8' }); // the default is 'buffer'
-// console.log('Output was:\n', output);
-sequelize.sync();
 
-app.use(
-  '/api-docs',
-  swaggerUi.serve,
-  swaggerUi.setup(load(path.resolve('./api-docs.yml')))
-);
+// app.use(
+//   '/api-docs',
+//   swaggerUi.serve,
+//   swaggerUi.setup(load(path.resolve('./api-docs.yml')))
+// );
 
 app.use(logger('dev'));
 app.use(express.json());
